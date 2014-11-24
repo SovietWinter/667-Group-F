@@ -2,8 +2,6 @@
 
 one:
   image: MyString
-  post_id: MyString
 
 two:
   image: MyString
-  post_id: MyString

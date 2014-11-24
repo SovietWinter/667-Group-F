@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  post: MyString
-  responds_to: MyString
 
 two:
-  post: MyString
-  responds_to: MyString
+

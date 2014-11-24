@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  post: MyString
-  reference: MyString
 
 two:
-  post: MyString
-  reference: MyString
