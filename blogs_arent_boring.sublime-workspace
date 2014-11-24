@@ -4,12 +4,52 @@
 		"selected_items":
 		[
 			[
-				"d",
-				"d"
+				"fark",
+				"farkelx"
+			],
+			[
+				"k",
+				"k"
+			],
+			[
+				"far",
+				"farkely"
+			],
+			[
+				"f",
+				"farkelx"
+			],
+			[
+				"new",
+				"newHand"
+			],
+			[
+				"ex",
+				"exprollVal"
+			],
+			[
+				"c",
+				"curVal"
+			],
+			[
+				"popF",
+				"popFarkel"
+			],
+			[
+				"pop",
+				"PopFarkely"
+			],
+			[
+				"Pop",
+				"PopFarkelx"
 			],
 			[
 				"m",
 				"m"
+			],
+			[
+				"d",
+				"d"
 			],
 			[
 				"da",
@@ -288,10 +328,50 @@
 	"buffers":
 	[
 		{
-			"file": "/home/jason/workspace/667-workspace/simple_chat/Gemfile",
+			"file": "app/models/user.rb",
 			"settings":
 			{
-				"buffer_size": 518,
+				"buffer_size": 299,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/post.rb",
+			"settings":
+			{
+				"buffer_size": 146,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/migrate/20141120204540_create_users.rb",
+			"settings":
+			{
+				"buffer_size": 307,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "db/migrate/20141120205150_create_posts.rb",
+			"settings":
+			{
+				"buffer_size": 289,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/follow.rb",
+			"settings":
+			{
+				"buffer_size": 56,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/jason/workspace/farkel/farkel.c",
+			"settings":
+			{
+				"buffer_size": 7314,
 				"line_ending": "Unix"
 			}
 		}
@@ -320,6 +400,9 @@
 	},
 	"file_history":
 	[
+		"/home/jason/workspace/667-workspace/term-project/blogs_arent_boring/config/routes.rb",
+		"/home/jason/workspace/667-workspace/term-project/blogs_arent_boring/app/controllers/application_controller.rb",
+		"/home/jason/workspace/667-workspace/simple_chat/Gemfile",
 		"/home/jason/workspace/farkel/farkel.c",
 		"/home/jason/workspace/667-workspace/simple_chat/app/assets/javascripts/home.js.coffee",
 		"/home/jason/workspace/667-workspace/simple_chat/app/assets/javascripts/message.coffee",
@@ -327,7 +410,6 @@
 		"/home/jason/workspace/667-workspace/simple_chat/app/views/home/index.html.erb",
 		"/home/jason/workspace/667-workspace/simple_chat/app/controllers/message_controller.rb",
 		"/home/jason/workspace/667-workspace/simple_chat/app/controllers/application_controller.rb",
-		"/home/jason/workspace/667-workspace/simple_chat/Gemfile",
 		"/home/jason/workspace/667-workspace/simple_chat/app/views/layouts/application.html.erb",
 		"/home/jason/workspace/667-workspace/simple_chat/config/environments/development.rb",
 		"/home/jason/workspace/667-workspace/simple_chat/config/routes.rb",
@@ -412,6 +494,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Value",
 			"tday",
 			"bday",
 			"tday",
@@ -474,23 +557,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/jason/workspace/667-workspace/simple_chat/Gemfile",
+					"file": "app/models/user.rb",
 					"settings":
 					{
-						"buffer_size": 518,
+						"buffer_size": 299,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								518,
-								518
+								102,
+								102
 							]
 						],
 						"settings":
@@ -499,6 +582,141 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/models/post.rb",
+					"settings":
+					{
+						"buffer_size": 146,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								146,
+								146
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "db/migrate/20141120204540_create_users.rb",
+					"settings":
+					{
+						"buffer_size": 307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								112,
+								112
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "db/migrate/20141120205150_create_posts.rb",
+					"settings":
+					{
+						"buffer_size": 289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								87,
+								87
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/models/follow.rb",
+					"settings":
+					{
+						"buffer_size": 56,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								56,
+								56
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/jason/workspace/farkel/farkel.c",
+					"settings":
+					{
+						"buffer_size": 7314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7311,
+								7311
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6696.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
