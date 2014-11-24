@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: MyString
+  user: MyString
+  progress: 1
+  completed: false
+
+two:
+  post: MyString
+  user: MyString
+  progress: 1
+  completed: false
