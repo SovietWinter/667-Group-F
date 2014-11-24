@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
 	has_many :my_read_progresses, class_name: "ReadProgress"
 	has_many :read_progresses, through: :my_read_progresses
 
+	has_many :bookmarkings
+	has_many :bookmarks, through: :bookmarkings
+
 	validates_presence_of :username
 	validates_presence_of :email
 	validates_presence_of :real_name
