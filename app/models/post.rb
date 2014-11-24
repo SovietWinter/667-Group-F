@@ -7,6 +7,12 @@ class Post < ActiveRecord::Base
 	has_many :bookmarkings
 	has_many :bookmarkeds, through: :bookmarkings
 
+	has_many :referencings
+	has_many :references, through: :referencings
+	has_many :backwards_referencings, class_name: "Referencing", foreign_key: "reference_id"
+	has_many :referenced_by, through: :backwards_referencings, source: :post
+	
+
 	validates_presence_of :title
 	validates_presence_of :content
 	validates_presence_of :topic
