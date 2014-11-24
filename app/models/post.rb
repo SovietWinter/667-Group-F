@@ -17,6 +17,8 @@ class Post < ActiveRecord::Base
 	has_many :backwards_respondings, class_name: "Responding", foreign_key: "responds_to_id"
 	has_many :response_of, through: :backwards_respondings, source: :post
 	
+	has_and_belongs_to_many :tags
+
 	validates_presence_of :title
 	validates_presence_of :content
 	validates_presence_of :topic
