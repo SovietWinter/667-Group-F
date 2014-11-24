@@ -19,6 +19,8 @@ class Post < ActiveRecord::Base
 	
 	has_and_belongs_to_many :tags
 
+	has_many :post_imgs
+
 	validates_presence_of :title
 	validates_presence_of :content
 	validates_presence_of :topic
