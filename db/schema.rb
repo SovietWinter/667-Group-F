@@ -12,13 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20141120211631) do
-
-  create_table "follows", force: true do |t|
-    t.string   "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", force: true do |t|
     t.string   "user_id"
     t.string   "title"
@@ -37,8 +30,18 @@ ActiveRecord::Schema.define(version: 20141120211631) do
     t.string   "blog_name"
     t.string   "city"
     t.string   "country"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "password_digest"
+  end
+  
+  create_table "follows", force: true do |t|
+    t.string   "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+  
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
