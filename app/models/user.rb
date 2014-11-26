@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-	before_save { self.email = email.downcase, self.username = username.downcase}
+	before_save { self.email = email.downcase}
 	has_many :posts
+<<<<<<< HEAD
 
 	has_many :followings
 	has_many :follows, through: :followings
@@ -13,8 +14,7 @@ class User < ActiveRecord::Base
 	has_many :bookmarkings
 	has_many :bookmarks, through: :bookmarkings
 
-	validates :username,  presence: true, length: { maximum: 50 },
-	    uniqueness: { case_sensitive: false }
+	validates :username,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email,  presence: true, length: { maximum: 255 }, 
 		format: { with: VALID_EMAIL_REGEX } ,
