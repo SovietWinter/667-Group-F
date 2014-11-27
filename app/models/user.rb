@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
 	before_save { self.email = email.downcase}
 	has_many :posts
-<<<<<<< HEAD
-
 	has_many :followings
 	has_many :follows, through: :followings
 	has_many :backwards_followings, class_name: "Following", foreign_key: "follow_id"
