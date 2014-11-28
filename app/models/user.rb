@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-	before_save { self.email = email.downcase}
+	before_save {self.email = email.downcase}
+	before_save {self.username = username.downcase}
 	has_many :posts
 	has_many :followings
 	has_many :follows, through: :followings
