@@ -14,35 +14,35 @@
 ActiveRecord::Schema.define(version: 20141125045657) do
 
   create_table "bookmarkings", force: true do |t|
-    t.string   "user_id"
-    t.string   "post_id"
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "followings", force: true do |t|
-    t.string   "user_id"
-    t.string   "follow_id"
+    t.integer  "user_id"
+    t.integer  "follow_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "post_imgs", force: true do |t|
     t.string   "image"
-    t.string   "post_id"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "post_tags", force: true do |t|
-    t.string   "post_id"
-    t.string   "tag_id"
+    t.integer  "post_id"
+    t.integer  "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: true do |t|
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "title"
     t.text     "content"
     t.datetime "created_at",     null: false
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 20141125045657) do
   end
 
   create_table "read_progresses", force: true do |t|
-    t.string   "post_id"
-    t.string   "user_id"
+    t.integer  "post_id"
+    t.integer  "user_id"
     t.integer  "progress"
     t.boolean  "completed"
     t.datetime "created_at", null: false
@@ -61,15 +61,15 @@ ActiveRecord::Schema.define(version: 20141125045657) do
   end
 
   create_table "referencings", force: true do |t|
-    t.string   "post_id"
-    t.string   "reference_id"
+    t.integer  "post_id"
+    t.integer  "reference_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "respondings", force: true do |t|
-    t.string   "post_id"
-    t.string   "responds_to_id"
+    t.integer  "post_id"
+    t.integer  "responds_to_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
