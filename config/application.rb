@@ -23,7 +23,6 @@ module BlogsArentBoring
     config.generators.javascript_engine :js
 
     config.assets.paths << Rails.root.join("vendor","assets","bower_components")
-    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
 
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff)$)
 
