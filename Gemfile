@@ -12,7 +12,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bower-rails'
 gem 'angular-rails-templates'
 
-gem 'bcrypt', '3.1.7'
+
+gem 'bcrypt',               '3.1.7'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
+gem 'coderay'
 
 group :test, :development do
   gem 'sqlite3'
