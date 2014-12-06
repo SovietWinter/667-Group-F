@@ -14,10 +14,22 @@ splash.config([ '$routeProvider',
         templateUrl: "splash.html",
         controller: 'IndexContoller'
       });
+    $routeProvider
+      .when('/login', {
+        templateUrl: "login.html",
+        controller: 'LoginContoller'
+      });
+    $routeProvider
+      .when('/explore', {
+        templateUrl: "explore.html",
+        controller: 'ExploreContoller'
+      });
   }
 ]);
 
 splashControllers = angular.module('splashControllers',[]);
+
+// READ LOGGED IN
 
 var read = angular.module('read',[
   'templates',
@@ -25,8 +37,6 @@ var read = angular.module('read',[
   'ngResource',
   'readControllers'
 ]);
-
-// READ LOGGED IN
 
 read.config([ '$routeProvider',
   function($routeProvider){
@@ -49,6 +59,11 @@ read.config([ '$routeProvider',
       .when('/follow', {
         templateUrl: "follow.html",
         controller: "FollowContoller"
+      });
+    $routeProvider
+      .when('/explore', {
+        templateUrl: "explore.html",
+        controller: "ExploreContoller"
       });
   }
 ]);

@@ -1,10 +1,15 @@
-<!-- PUT TOP BAR (SIGN UP / LOGIN / EXPLORE)-->
 <% provide(:title, "Synth | socialupvoteblog")%>
-<h1>TOP BAR</h1>
-
 <div ng-app="splash">
+  <div id="top-bar" ng-controller="RouteController">
+    <h1><a href ng-click="route('splash')">SYNTH</a></h1>
+    <nav>
+      <h3><a href ng-click="route('login')">login / sign up</a></h3>
+      <h3><a href ng-click="route('explore')">explore</a></h3>
+    </nav>
+  </div>
+
   <div class="view-container">
-    <!-- SHOULDNT NEED ANOTHER ROUTE FOR THIS ACTUALLY MAYBE BECAUSE COULD FILL WITH EXPLORE WITH DIFFERENT TOP BAR VERY SICK -->
     <div ng-view class="view-frame animate-view"></div>
   </div>
+
 </div>

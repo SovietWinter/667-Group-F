@@ -5,7 +5,7 @@ readControllers.controller("HomeContoller", ['$scope', '$resource', '$location',
     Post = $resource('/posts/', {format: 'json'});
     Post.query(function(results){
       $scope.posts = results;
-    })
+    });
   }
 ]);
 
@@ -22,6 +22,12 @@ readControllers.controller("BlogContoller", ['$scope', '$resource', '$routeParam
 ]);
 
 readControllers.controller("FollowContoller", ['$scope', '$resource', '$location',
+  function($scope, $resource, $location){
+
+  }
+]);
+
+readControllers.controller("ExploreContoller", ['$scope', '$resource', '$location',
   function($scope, $resource, $location){
 
   }
