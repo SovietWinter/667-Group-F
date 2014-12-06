@@ -14,7 +14,7 @@ splashControllers.controller("IndexContoller", [ '$scope', '$routeParams', '$loc
   }
 ]);
 
-splashControllers.controller("LoginContoller", [ '$scope', '$routeParams', '$location', '$resource',
+splashControllers.controller("SignupContoller", [ '$scope', '$routeParams', '$location', '$resource',
   function($scope, $routeParams, $location, $resource){
 
   }

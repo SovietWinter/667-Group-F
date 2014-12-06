@@ -1,25 +1,28 @@
 <% provide(:title, "Log in") %>
-<h1>Log in</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:session, url: login_path) do |f| %>
+<div id="top-bar">
+  <h1><a href="/">SYNTH</a></h1>
+  <nav>
+    <h3><a>login</a></h3>
+    <h3><a href="/welcome/#/signup">sign up</a></h3>
+    <h3><a href="/welcome/#/explore">explore</a></h3>
+  </nav>
+</div>
 
-      <%= f.label :username %>
-      <%= f.text_field :username, class: 'form-control' %>
+<div class="view-container">
+  <%= form_for(:session, url: login_path) do |f| %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-input' %>
 
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-        <%= f.check_box :remember_me %>
-        <span>Remember me on this computer</span>
-      <% end %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-input' %>
 
-      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <%= f.label :remember_me, class: "checkbox" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this computer</span>
     <% end %>
 
-    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
-    <%= debug(params) if Rails.env.development? %>
-  </div>
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
 </div>

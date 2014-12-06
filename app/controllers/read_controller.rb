@@ -1,7 +1,7 @@
 class ReadController < ApplicationController
   def index
-    if request.env['PATH_INFO'] == '/home'
-      redirect_to '/#/home'
+    if !logged_in?
+      redirect_to '/welcome/'
     end
   end
 end

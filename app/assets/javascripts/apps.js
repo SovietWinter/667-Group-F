@@ -15,9 +15,9 @@ splash.config([ '$routeProvider',
         controller: 'IndexContoller'
       });
     $routeProvider
-      .when('/login', {
-        templateUrl: "login.html",
-        controller: 'LoginContoller'
+      .when('/signup', {
+        templateUrl: "signup.html",
+        controller: 'SignupContoller'
       });
     $routeProvider
       .when('/explore', {

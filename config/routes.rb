@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  root    'splash#index'
+  root    'read#index'
 
-  # get     'home'    =>  'read#index'
+  get     'welcome'    =>  'splash#index'
   # get     'compose' =>  'compose#index'
-  # get     'splash'  =>  'splash#index'
 
-  # get     'login'   => 'splash#index'
-  get     'login'   => 'sessions#new'
   post    'login'   => 'sessions#create'
   delete  'logout'  => 'sessions#destroy'
 
