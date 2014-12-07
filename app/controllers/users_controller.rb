@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :follow_list]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -12,8 +12,9 @@ class UsersController < ApplicationController
   def show
   end
 
-  # GET /users/:id/follow
+  # GET /users/follow
   def follow_list
+	@user = User.find(session[:user_id])
   	@following_list = @user.follows
     @follower_list = @user.followers
   end
