@@ -11,7 +11,13 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
   end
-
+  
+  # GET posts/recent/:id
+  def recent
+	@user = User.find(session[:user_id])
+	#@user.follows
+  end
+  
   # GET /posts/new
   def new
     @post = Post.new
