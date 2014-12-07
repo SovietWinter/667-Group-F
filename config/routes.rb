@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'users/follow' => 'users#follow_list'
   get 'posts/recent' => 'posts#recent'
+  get 'posts/top' => 'posts#top'
   
   get 'follow/:id' => 'users#follow'
   resources :posts

@@ -21,6 +21,11 @@ class PostsController < ApplicationController
 	end
 	@followed_recent_posts = (Post.order('created_at DESC').limit(10).where(:user_id => @followed_user_ids))
   end
+
+  def top
+    most_recommends = Post.maximum('num_recommends')
+    @top_recommend_posts = (Post.order('created_at DESC').limit(10).where(:num_recommends => most_recommends))
+  end
   
   # GET /posts/new
   def new
