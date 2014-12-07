@@ -19,6 +19,8 @@ gem 'albino'
 gem 'nokogiri'
 gem 'coderay'
 
+gem 'paperclip'
+
 group :test, :development do
   gem 'sqlite3'
   # gem "rspec-rails", "~> 2.0"
