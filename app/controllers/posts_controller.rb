@@ -14,8 +14,12 @@ class PostsController < ApplicationController
   
   # GET posts/recent/:id
   def recent
-	@user = User.find(session[:user_id])
-	#@user.follows
+	user = User.find(params[:id])
+	@followed_user_ids = Array.new 
+	user.follows.each do |user|
+		@followed_user_ids.push(user.id)
+	end
+	@followed_recent_posts = (Post.order('created_at DESC').limit(10).where(:user_id => @followed_user_ids))
   end
   
   # GET /posts/new
