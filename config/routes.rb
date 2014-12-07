@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   delete  'logout'  => 'sessions#destroy'
 
   get 'users/:id/follow' => 'users#follow_list'
-  
+  get 'posts/recent/:id' => 'posts#recent'
 
   resources :posts
 
