@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+
+	@author_name
+
 	belongs_to :user
 
 	has_many :their_read_progresses, class_name: "ReadProgress"
@@ -21,7 +24,12 @@ class Post < ActiveRecord::Base
 
 	has_many :post_imgs
 
+	validates_presence_of :user_id
 	validates_presence_of :title
 	validates_presence_of :content
 	validates_presence_of :topic
+
+	def author_name
+		@author_name ||= User.find(self.user_id).username
+	end
 end

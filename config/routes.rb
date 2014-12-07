@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :post_imgs
+
   root    'read#index'
 
   get     'welcome'    =>  'splash#index'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201043407) do
+ActiveRecord::Schema.define(version: 20141207081338) do
 
   create_table "bookmarkings", force: true do |t|
     t.integer  "user_id"
@@ -28,30 +28,35 @@ ActiveRecord::Schema.define(version: 20141201043407) do
   end
 
   create_table "post_imgs", force: true do |t|
+    t.integer  "post_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "post_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-  end
-
-  create_table "post_tags", force: true do |t|
-    t.integer  "post_id"
-    t.integer  "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",     null: false
+    t.datetime "created_at",         null: false
     t.integer  "num_recommends"
     t.string   "topic"
-    t.datetime "updated_at",     null: false
+    t.datetime "updated_at",         null: false
+    t.boolean  "published"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "posts_tags", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "read_progresses", force: true do |t|

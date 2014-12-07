@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @post_img.post_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= link_to image_tag(@post_img.image.url(:med)), @post_img.image.url %>
+</p>
+
+<%= link_to 'Edit', edit_post_img_path(@post_img) %> |
+<%= link_to 'Back', post_imgs_path %>
