@@ -1,0 +1,28 @@
+<% provide(:title, "Log in") %>
+
+<div id="top-bar">
+  <h1><a href="/">SYNTH</a></h1>
+  <nav>
+    <h3><a>login</a></h3>
+    <h3><a href="/welcome/#/signup">sign up</a></h3>
+    <h3><a href="/welcome/#/explore">explore</a></h3>
+  </nav>
+</div>
+
+<div class="view-container">
+  <%= form_for(:session, url: login_path) do |f| %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-input' %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-input' %>
+
+    <%= f.label :remember_me, class: "checkbox" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this computer</span>
+    <% end %>
+
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
+</div>

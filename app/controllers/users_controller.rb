@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :follow_list]
 
   # GET /users
   # GET /users.json
@@ -12,6 +12,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  # GET /users/:id/follow
+  def follow_list
+	@following_list = @user.follows
+    @follower_list = @user.followers
+    
   # GET /users/new
   def new
     @user = User.new
@@ -28,6 +33,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+		#If successful, login as new registered user
+        log_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

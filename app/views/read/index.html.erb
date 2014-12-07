@@ -1,0 +1,17 @@
+<% provide(:title, "Synth | Read")%>
+<div ng-app="read">
+
+  <div id="top-bar">
+    <h1><a href="/#">SYNTH</a></h1>
+    <nav>
+      <h3><a href="#"><%= current_user.username %></a></h3>
+      <h3><a href="/explore">explore</a></h3>
+      <h3><a href="/compose">compose</a></h3>
+    </nav>
+  </div>
+
+  <div class="view-container">
+    <div ng-view class="view-frame animate-view"></div>
+  </div>
+
+</div>

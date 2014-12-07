@@ -1,0 +1,30 @@
+<% provide(:title, "Synth | socialupvoteblog")%>
+<div ng-app="splash">
+  <div id="top-bar" ng-controller="RouteController">
+    <h1><a href ng-click="route('/')">SYNTH</a></h1>
+    <nav>
+      <h3><a href>login</a></h3>
+      <h3><a href ng-click="route('signup')">sign up</a></h3>
+      <h3><a href ng-click="route('explore')">explore</a></h3>
+    </nav>
+  </div>
+  <div id="login-slider">
+    <%= form_for(:session, url: login_path) do |f| %>
+      <span class="form-label">username: </span>
+      <%= f.text_field :username, class: 'form-input' %>
+      <span class="form-label">password: </span>
+      <%= f.password_field :password, class: 'form-input' %>
+      <span class="check-label">remember me: <%= f.check_box :remember_me, class: 'form-checkbox'%></span>
+
+      <%= f.submit "login", class: "form-input form-submit" %>
+      <% if flash[:login_error] %>
+        <span class="form-label error">invalid user credentials</span>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="view-container">
+    <div ng-view class="view-frame animate-view"></div>
+  </div>
+
+</div>

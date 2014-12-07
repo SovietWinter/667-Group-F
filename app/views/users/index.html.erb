@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Users</h1>
-
+<% if logged_in? %>
+  Logged In As: <b><%= current_user.username %></b>
+<% else %>
+  Not Logged In
+<% end %>
 <table>
   <thead>
     <tr>

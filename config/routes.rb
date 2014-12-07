@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
-  resources :tags
+  root    'read#index'
+
+  get     'welcome'    =>  'splash#index'
+  # get     'compose' =>  'compose#index'
+
+  post    'login'   => 'sessions#create'
+  delete  'logout'  => 'sessions#destroy'
+
+  get 'users/:id/follow' => 'users#follow_list'
+  
 
   resources :posts
 
-  resources :users
+  resources :tags
 
-  root 'users#index'
+  resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
