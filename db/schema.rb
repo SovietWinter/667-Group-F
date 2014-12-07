@@ -41,15 +41,11 @@ ActiveRecord::Schema.define(version: 20141207081338) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",         null: false
+    t.datetime "created_at",     null: false
     t.integer  "num_recommends"
     t.string   "topic"
-    t.datetime "updated_at",         null: false
+    t.datetime "updated_at",     null: false
     t.boolean  "published"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   create_table "posts_tags", force: true do |t|

@@ -12,9 +12,9 @@ class PostsController < ApplicationController
   def show
   end
   
-  # GET posts/recent/:id
+  # GET posts/recent
   def recent
-	user = User.find(params[:id])
+	user = User.find(session[:user_id])
 	@followed_user_ids = Array.new 
 	user.follows.each do |user|
 		@followed_user_ids.push(user.id)
