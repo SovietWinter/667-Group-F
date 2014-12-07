@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in?, only: [:follow]
   
   # GET /users
   # GET /users.json
@@ -15,16 +14,26 @@ class UsersController < ApplicationController
   
   # GET /follow/:id
   def follow
-	current_user = User.find(session[:user_id])
-	following = Following.create(user_id: current_user.id, follow_id: params[:id])
-	following.save
+  	if logged_in?
+		#check if record already exists
+		if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
+			#do nothing
+		else
+			#if doesn't exist, add
+			current_user = User.find(session[:user_id])
+			following = Following.create(user_id: current_user.id, follow_id: params[:id])
+			following.save
+		end
+	end
   end
   
   # GET /users/follow
   def follow_list
-	@user = User.find(session[:user_id])
-  	@following_list = @user.follows
-    @follower_list = @user.followers
+	if logged_in?
+		@user = User.find(session[:user_id])
+		@following_list = @user.follows
+		@follower_list = @user.followers
+	end
   end
 
   # GET /users/new
