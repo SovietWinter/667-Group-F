@@ -10,7 +10,10 @@ tyler = User.create!(username: 'westerman', email: 'westerantyler@gmail.com', re
 
 other = User.create!(username: 'otherguy', email: 'otherguy@gmail.com', real_name: 'realguy', blog_name: 'very real guy',
                     city: 'San Jose', country: 'US', password: 'voidpass2')
-
+                    
+other2 = User.create!(username: 'superman12', email: 'superman12@gmail.com', real_name: 'clark', blog_name: 'superblog',
+                    city: 'San Jose', country: 'US', password: 'voidpass3')
+                    
 Post.create!(user_id: tyler.id, title: 'first post', content: 'this is the first post', num_recommends: 0, topic: 'admin')
 
 Post.create!(user_id: tyler.id, title: 'second post', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', num_recommends: 0, topic: 'admin')

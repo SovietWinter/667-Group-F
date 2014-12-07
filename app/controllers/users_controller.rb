@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in?, only: [:follow]
+  
   # GET /users
   # GET /users.json
   def index
@@ -11,7 +12,14 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
   end
-
+  
+  # GET /follow/:id
+  def follow
+	current_user = User.find(session[:user_id])
+	following = Following.create(user_id: current_user.id, follow_id: params[:id])
+	following.save
+  end
+  
   # GET /users/follow
   def follow_list
 	@user = User.find(session[:user_id])
