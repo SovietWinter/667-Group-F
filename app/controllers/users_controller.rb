@@ -14,8 +14,9 @@ class UsersController < ApplicationController
 
   # GET /users/:id/follow
   def follow_list
-	@following_list = @user.follows
+  	@following_list = @user.follows
     @follower_list = @user.followers
+  end
     
   # GET /users/new
   def new
