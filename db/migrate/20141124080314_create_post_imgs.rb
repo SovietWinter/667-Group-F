@@ -1,7 +1,7 @@
 class CreatePostImgs < ActiveRecord::Migration
   def change
     create_table :post_imgs do |t|
-      t.string :image
+      t.attachment :image
       t.integer :post_id
 
       t.timestamps null: false

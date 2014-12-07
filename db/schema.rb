@@ -28,10 +28,13 @@ ActiveRecord::Schema.define(version: 20141201043407) do
   end
 
   create_table "post_imgs", force: true do |t|
-    t.string   "image"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "post_tags", force: true do |t|
