@@ -1,1 +1,35 @@
-<p>signup</p>
+<div class="center-wrap">
+  <form novalidate id="signup-form">
+    <!-- username -->
+    <span class="form-label">username:</span>
+    <input type="text" ng-model="user.username" class="form-input" required/>
+    <!-- EMAIL -->
+    <span class="form-label">email:</span>
+    <input type="email" ng-model="user.email" class="form-input" required/>
+    <!-- PASSWORD -->
+    <span class="form-label">password:</span>
+    <input type="password" ng-model="user.password" class="form-input"/ required>
+    <!-- PASSWORD -->
+    <span class="form-label">password confirm:</span>
+    <input type="password" ng-model="user.password_confirmation" class="form-input"/ required>
+    <!-- REAL -->
+    <span class="form-label">real name:</span>
+    <input type="text" ng-model="user.real_name" class="form-input"/ required>
+    <!-- BLOG -->
+    <span class="form-label">blog name:</span>
+    <input type="text" ng-model="user.blog_name" class="form-input"/ required>
+    <!-- CITY -->
+    <span class="form-label">city:</span>
+    <input type="text" ng-model="user.city" class="form-input"/ required>
+    <!-- COUNTRY -->
+    <span class="form-label">country:</span>
+    <input type="text" ng-model="user.country" class="form-input"/ required>
+
+    <input type="submit" ng-click="signup()" value="sign up" class="form-submit"/>
+  </form>
+  <div id="error-messages">
+    <p ng-repeat="(field, error) in errors" class="error form-error">
+      {{field.split('_').join(' ')}} {{error[0]}}
+    </p>
+  </div>
+</div>

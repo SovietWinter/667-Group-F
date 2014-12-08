@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+  skip_before_filter :verify_authenticity_token
+
   # GET /users
   # GET /users.json
   def index
@@ -11,29 +12,29 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
   end
-  
+
   # GET /follow/:id
   def follow
-  	if logged_in?
-		#check if record already exists
-		if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
-			#do nothing
-		else
-			#if doesn't exist, add
-			current_user = User.find(session[:user_id])
-			following = Following.create(user_id: current_user.id, follow_id: params[:id])
-			following.save
-		end
-	end
+    if logged_in?
+    #check if record already exists
+    if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
+      #do nothing
+    else
+      #if doesn't exist, add
+      current_user = User.find(session[:user_id])
+      following = Following.create(user_id: current_user.id, follow_id: params[:id])
+      following.save
+    end
   end
-  
+  end
+
   # GET /users/follow
   def follow_list
-	if logged_in?
-		@user = User.find(session[:user_id])
-		@following_list = @user.follows
-		@follower_list = @user.followers
-	end
+  if logged_in?
+    @user = User.find(session[:user_id])
+    @following_list = @user.follows
+    @follower_list = @user.followers
+  end
   end
 
   # GET /users/new
@@ -48,18 +49,17 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    puts "\n\nPARAMS" + params.to_json
+    puts "\n\nFILTERED PARAMS" + user_params.to_json
     @user = User.new(user_params)
+    puts "\n\nPRE SAVE PASS:" + @user.to_json
 
-    respond_to do |format|
-      if @user.save
-		#If successful, login as new registered user
-        log_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      #If successful, login as new registered user
+      log_in @user
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
@@ -95,6 +95,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :real_name, :prof_pic, :blog_name, :city, :country)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation, :real_name, :prof_pic, :blog_name, :city, :country)
     end
 end

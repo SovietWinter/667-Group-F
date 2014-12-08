@@ -6,6 +6,7 @@
 # Enable parameter wrapping for JSON. You can disable this by setting :format to an empty array.
 ActiveSupport.on_load(:action_controller) do
   wrap_parameters format: [:json] if respond_to?(:wrap_parameters)
+  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :real_name, :blog_name, :city, :country]
 end
 
 # To enable root element in JSON for ActiveRecord objects.

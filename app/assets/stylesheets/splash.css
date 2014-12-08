@@ -1,0 +1,61 @@
+#login-slider{
+  position: absolute;
+  top: -150px;
+  right: 10px;
+  width: 13em;
+  letter-spacing: .1em;
+  z-index: 9;
+}
+
+.center-wrap{
+  position: absolute;
+  width: 50%;
+  text-align: center;
+}
+
+#splash-div{
+  padding-top: 20%;
+  display: inline-block;
+  text-align: center;
+}
+
+#splash-div h2{
+  margin-bottom: 20px;
+}
+
+#splash-div a{
+  line-height: .3em;
+  display: block;
+  text-decoration: none;
+  border: 1px solid #111;
+  border-radius: 18px;
+  margin-bottom: 5px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+#splash-div a:hover {
+  color: #fff;
+  border: 1px solid rgba(0,0,0,0);
+  background-color: #AA1E1E;
+}
+
+.form-input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+
+#signup-form{
+  display: inline-block;
+  width: 50%;
+}
+
+#signup-form .form-submit{
+  margin-top: 20px;
+  width: 100%;
+}
+
+#error-messages{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
