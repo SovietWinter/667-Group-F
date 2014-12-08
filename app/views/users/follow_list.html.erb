@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<p><%= current_user.id %></p>
   <b>Following: </b>
   <%= @user.follows.map do |item|
 		item.username
@@ -9,6 +10,5 @@
   <%= @user.followers.map do |item|
 		item.username
 	  end%>
-<p>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

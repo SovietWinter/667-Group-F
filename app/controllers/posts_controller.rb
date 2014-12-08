@@ -29,7 +29,11 @@ class PostsController < ApplicationController
   
   # GET /posts/new
   def new
-    @post = Post.new
+	if logged_in?
+		@post = Post.new
+	else
+		#do something?
+	end
   end
 
   # GET /posts/1/edit
