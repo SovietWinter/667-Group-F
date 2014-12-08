@@ -27,10 +27,10 @@ splashControllers.controller("SignupContoller", [ '$scope', '$routeParams', '$lo
       onError = function(_httpResponse){
         console.log(_httpResponse);
         $scope.errors = _httpResponse.data;
-        // flash.error = errors;
+        window.scrollTo(0,document.body.scrollHeight);
       }
       User.create($scope.user, function(response){
-        window.location.href = "/"
+        window.location.href = "/";
       }, onError);
     }
   }

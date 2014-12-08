@@ -16,25 +16,25 @@ class UsersController < ApplicationController
   # GET /follow/:id
   def follow
     if logged_in?
-    #check if record already exists
-    if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
-      #do nothing
-    else
-      #if doesn't exist, add
-      current_user = User.find(session[:user_id])
-      following = Following.create(user_id: current_user.id, follow_id: params[:id])
-      following.save
+      #check if record already exists
+      if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
+        Following.where(:user_id => current_user.id, :follow_id => params[:id]).destroy
+      else
+        #if doesn't exist, add
+        current_user = User.find(session[:user_id])
+        following = Following.create(user_id: current_user.id, follow_id: params[:id])
+        following.save
+      end
     end
-  end
   end
 
   # GET /users/follow
   def follow_list
-  if logged_in?
-    @user = User.find(session[:user_id])
-    @following_list = @user.follows
-    @follower_list = @user.followers
-  end
+    if logged_in?
+      @user = User.find(session[:user_id])
+      @following_list = @user.follows
+      @follower_list = @user.followers
+    end
   end
 
   # GET /users/new

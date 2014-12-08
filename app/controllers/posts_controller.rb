@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   # GET /posts
   # GET /posts.json
@@ -11,15 +12,15 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
   end
-  
+
   # GET posts/recent
   def recent
-	user = User.find(session[:user_id])
-	@followed_user_ids = Array.new 
-	user.follows.each do |user|
-		@followed_user_ids.push(user.id)
-	end
-	@followed_recent_posts = (Post.order('created_at DESC').limit(10).where(:user_id => @followed_user_ids))
+  	user = User.find(session[:user_id])
+  	@followed_user_ids = Array.new
+  	user.follows.each do |user|
+  		@followed_user_ids.push(user.id)
+  	end
+  	@followed_recent_posts = (Post.order('created_at DESC').limit(10).where(:user_id => @followed_user_ids))
   end
 
   def top
@@ -27,7 +28,7 @@ class PostsController < ApplicationController
 
     @top_posts = (Post.order('num_recommends + bookmarks + read DESC').limit(4).where(:topic, :city, :tag, :country))
   end
-  
+
   # GET /posts/new
   def new
 	if logged_in?
@@ -45,8 +46,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
   	if logged_in?
-      @post = Post.new(post_params)
-
       respond_to do |format|
         if @post.save
           format.html { redirect_to @post, notice: 'Post was successfully created.' }

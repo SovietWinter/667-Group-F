@@ -4,7 +4,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
-    "angular-flash": "latest",
+    "angular-markdown-directive": "latest",
     "bootstrap-sass-official": "latest"
   }
 }

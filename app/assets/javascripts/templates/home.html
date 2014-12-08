@@ -1,6 +1,13 @@
-<div id="post-preview" ng-repeat="post in posts">
-  <h2>{{post.title}}</h2>
-  <h3>By: {{post.user_id}}</h3>
-  <p>{{post.content}}</p>
-  <pre>RAW: {{post}}</pre>
+<div id="post-feed">
+  <div class="feed-posts" ng-repeat="post in posts">
+    <h2><a href ng-click="read($index)">{{post.title}}</a></h2>
+    <h3>By: <a href>{{post.author_name}}</a></h3>
+    <div class="post-box">
+      <a class="nostyle" href ng-click="read($index)"><p class="preview-text">{{post.content.split(' ').slice(0,30).join(' ')}} . . .<br/><span class="read-button">read more</span></p></a>
+    </div>
+    <div class="post-controls">
+      <a href class="nostyle"><p class="stat-count">bookmark {{post.bookmarkings.length}}</p></a>
+      <a href ng-click="recommend($index)" class="nostyle"><p class="stat-count">recommend {{post.num_recommends}}</p></a>
+    </div>
+  </div>
 </div>

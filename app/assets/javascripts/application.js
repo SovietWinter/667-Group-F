@@ -16,4 +16,7 @@
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
 //= require angular-rails-templates
+//= require angular-sanitize/angular-sanitize
+//= require showdown/compressed/showdown
+//= require angular-markdown-directive/markdown
 //= require_tree .

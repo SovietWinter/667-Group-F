@@ -35,7 +35,8 @@ var read = angular.module('read',[
   'templates',
   'ngRoute',
   'ngResource',
-  'readControllers'
+  'readControllers',
+  'btford.markdown'
 ]);
 
 read.config([ '$routeProvider',
