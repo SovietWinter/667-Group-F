@@ -23,8 +23,9 @@ class PostsController < ApplicationController
   end
 
   def top
-    most_recommends = Post.maximum('num_recommends')
-    @top_recommend_posts = (Post.order('created_at DESC').limit(10).where(:num_recommends => most_recommends))
+    #@post = Post.where(:topic, :city, :tag, :country)
+
+    @top_posts = (Post.order('num_recommends + bookmarks + read DESC').limit(4).where(:topic, :city, :tag, :country))
   end
   
   # GET /posts/new
