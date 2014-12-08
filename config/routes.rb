@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  get 'bookmarks/create'
+  post 'bookmarks/create'
+  get 'bookmarks/destroy'
+  post 'bookmarks/destroy'
+
   resources :post_imgs
 
   root    'read#index'
@@ -19,7 +25,6 @@ Rails.application.routes.draw do
   resources :tags
 
   resources :users
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
