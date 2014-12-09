@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'read_progress/create'
+  get 'read_progress/update_progress'
+  get 'read_progress/update_status'
+
   get 'bookmarks/create'
   post 'bookmarks/create'
   get 'bookmarks/destroy'
