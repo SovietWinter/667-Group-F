@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 	has_many :bookmarkings
 	has_many :bookmarks, through: :bookmarkings
 
+  has_attached_file :prof_pic, styles: { small: "64x64", med: "100x100", large: "200x200" }
+
+  validates_attachment_content_type :prof_pic, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
 	validates :username,  presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	validates :email,  presence: true, length: { maximum: 255 },

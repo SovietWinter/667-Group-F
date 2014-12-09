@@ -17,7 +17,7 @@
 
 <p>
   <strong>Prof pic:</strong>
-  <%= @user.prof_pic %>
+  <%= link_to image_tag(@user.prof_pic.url(:med)), @user.prof_pic.url %>
 </p>
 
 <p>

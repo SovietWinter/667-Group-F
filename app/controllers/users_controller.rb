@@ -49,10 +49,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    puts "\n\nPARAMS" + params.to_json
-    puts "\n\nFILTERED PARAMS" + user_params.to_json
     @user = User.new(user_params)
-    puts "\n\nPRE SAVE PASS:" + @user.to_json
 
     if @user.save
       #If successful, login as new registered user
