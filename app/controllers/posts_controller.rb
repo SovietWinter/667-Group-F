@@ -24,9 +24,12 @@ class PostsController < ApplicationController
   end
 
   def top
-    #@post = Post.where(:topic, :city, :tag, :country)
-
-    @top_posts = (Post.order('num_recommends + bookmarks + read DESC').limit(4).where(:topic, :city, :tag, :country))
+    user = User.where(:city => current_user.city, :country => current_user.country)
+    user.each do |user|
+      @top_id.push(user.id)
+    @post = Post.where(:user_id => @top_id ,:topic =>current_post.topic, :tag => current_tag)
+    @top_posts = (Post.order('num_recommends + bookmarkeds + read DESC').limit(4))
+    end
   end
 
   # GET /posts/new
