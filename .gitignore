@@ -16,3 +16,6 @@
 /tmp
 *.sublime-project
 *.sublime-workspace
+
+# Ignore images
+/public/system/
