@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 	validates_presence_of :city
 	validates_presence_of :country
 	has_secure_password
-	validates :password, length: { minimum: 6 }
+	# validates :password, length: { minimum: 6 }
 
   # Returns the hash digest of the given string.
   def User.digest(string)

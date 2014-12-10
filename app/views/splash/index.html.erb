@@ -11,9 +11,9 @@
   <div id="login-slider">
     <%= form_for(:session, url: login_path) do |f| %>
       <span class="form-label">username: </span>
-      <%= f.text_field :username, class: 'form-input' %>
+      <%= f.text_field :username, class: 'form-input red' %>
       <span class="form-label">password: </span>
-      <%= f.password_field :password, class: 'form-input' %>
+      <%= f.password_field :password, class: 'form-input red' %>
       <span class="check-label">remember me: <%= f.check_box :remember_me, class: 'form-checkbox'%></span>
 
       <%= f.submit "login", class: "form-input form-submit" %>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="view-container">
-    <div ng-view class="view-frame animate-view"></div>
+    <div ng-view class="splash-view"></div>
   </div>
 
 </div>

@@ -1,0 +1,38 @@
+<div id="edit-info">
+    <h2>edit account information :</h2>
+    <form novalidate id="signup-form" name="saveForm">
+      <!-- username -->
+      <span class="form-label">username:</span>
+      <input type="text" ng-model="newUser.username" class="form-input" placeholder="{{user.username}}" />
+      <!-- EMAIL -->
+      <span class="form-label">email:</span>
+      <input type="email" ng-model="newUser.email" class="form-input" placeholder="{{user.email}}" />
+      <!-- PASSWORD -->
+      <span class="form-label">password:</span>
+      <input type="password" ng-model="newUser.password" class="form-input"  />
+      <!-- PASSWORD -->
+      <span class="form-label">password confirm:</span>
+      <input type="password" ng-model="newUser.password_confirmation" class="form-input"  />
+      <!-- REAL -->
+      <span class="form-label">real name:</span>
+      <input type="text" ng-model="newUser.real_name" class="form-input" placeholder="{{user.real_name}}" />
+      <!-- PROFILE PICTURE -->
+      <span class="form-label">profile picture:</span>
+      <img ng-src="{{user.prof_pic}}" ng-if="user.prof_pic!='/prof_pics/original/missing.png'">
+      <input type="file" ng-model="newUser.prof_pic" class="form-input" base-sixty-four-input>
+      <!-- BLOG -->
+      <span class="form-label">blog name:</span>
+      <input type="text" ng-model="newUser.blog_name" class="form-input" placeholder="{{user.blog_name}}"  />
+      <!-- CITY -->
+      <span class="form-label">city:</span>
+      <input type="text" ng-model="newUser.city" class="form-input" placeholder="{{user.city}}" />
+      <!-- COUNTRY -->
+      <span class="form-label">country:</span>
+      <input type="text" ng-model="newUser.country" class="form-input" placeholder="{{user.country}}" />
+
+      <input type="submit" ng-click="updateInfo()" value="save" class="form-submit"/>
+  </form>
+</div>
+
+<div id="stats">
+</div>

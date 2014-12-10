@@ -1,6 +1,9 @@
 asset 'angular'
 asset 'angular-route'
 asset 'angular-resource'
+asset 'angular-animate'
 asset 'angular-markdown-directive'
 asset 'bootstrap-sass-official'
+asset 'angular-base64-upload'
+asset 'angucomplete'
 # vim: ft=ruby

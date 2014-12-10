@@ -1,0 +1,21 @@
+<% provide(:title, "Synth | Compose")%>
+<div ng-app="compose" ng-controller="RouteController">
+
+  <div id="top-bar">
+    <h1><a href="/">SYNTH</a></h1>
+    <nav>
+      <h3><a href id="user-click"><%= current_user.username %></a></h3>
+      <h3><a href ng-click="nav.Right()">{{nav.right}}</a></h3>
+      <h3><a href ng-click="nav.Left()">{{nav.left}}</a></h3>
+    </nav>
+  </div>
+  <div id="user-menu">
+    <a href ng-click="route('/account')" class="nostyle user-buttons">account</a>
+    <a href ng-click="logout()" class="nostyle user-buttons">logout</a>
+  </div>
+
+  <div class="view-container">
+    <div ng-view class="view-frame animate-view"></div>
+  </div>
+
+</div>

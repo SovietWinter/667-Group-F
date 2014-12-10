@@ -46,12 +46,13 @@ a:hover {
 
 .nostyle{
   padding: 0;
-
+  text-decoration: none;
 }
 
 .nostyle:hover{
   color: inherit;
   background-color: transparent;
+  text-decoration: none;
 }
 
 #top-bar{
@@ -65,6 +66,9 @@ a:hover {
   background-color: #111;
   color: #f1f1ee;
   z-index: 10;
+  -webkit-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);
 }
 #top-bar h1{
   font-family: 'Josefin Sans', 'Open Sans', verdana, arial, helvetica, sans-serif;
@@ -97,7 +101,7 @@ a:hover {
 .view-container{
   margin-left: auto;
   margin-right: auto;
-  margin-top: 80px;
+  margin-top: 90px;
   width: 70%;
   overflow: hidden;
 }
@@ -157,4 +161,40 @@ a:hover {
   text-align: left;
   color: #AA1E1E;
   font-style: italic;
+}
+
+#explore-params{
+  position: fixed;
+  top: 65px;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  padding: 5px;
+  background-color: #a4a49e;
+  color: #f1f1ee;
+  z-index: 5;
+  text-align: center;
+}
+#explore-params span{
+  display: inline-block;
+  padding-top: 5px;
+  width: 25%;
+  margin: 0 3% 0 3%;
+  line-height: 30px;
+  font-size: 1.2em;
+  font-family: 'Raleway', 'Open Sans', verdana, arial, helvetica, sans-serif;
+  vertical-align: middle;
+}
+#explore-params input{
+  font-family: 'Raleway', 'Open Sans', verdana, arial, helvetica, sans-serif;
+  display: block;
+  margin-top: 4px;
+  width: 100%;
+  line-height: 30px;
+  font-size: 1.2em;
+  border-radius: 14px;
+  border: none;
+  background-color: #f0f0ed;
+  letter-spacing: .1em;
+  text-align: center;
 }

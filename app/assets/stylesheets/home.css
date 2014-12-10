@@ -1,16 +1,22 @@
 #user-menu{
+  background-color: #f1f1ee;
   position: absolute;
   top: -75px;
-  right: 5px;
-  width: 12em;
+  right: 0;
+  width: 14em;
+  padding: .6em .6em .6em .6em;
+  border-radius: 4px;
   z-index: 9;
+  -webkit-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);
+     -moz-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
 #user-menu a{
   display: block;
   text-align: center;
   padding: 5px 0 5px 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-family: 'Raleway', 'Open Sans', verdana, arial, helvetica, sans-serif;
   background-color: rgba(0,0,0,0);
   border-radius:14px;

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
+  wrap_parameters :post, include: [:id, :user_id, :title, :content, :num_recommends, :topic, :published]
 
   # GET /posts
   # GET /posts.json
@@ -30,6 +31,11 @@ class PostsController < ApplicationController
     @post = Post.where(:user_id => @top_id ,:topic =>current_post.topic, :tag => current_tag)
     @top_posts = (Post.order('num_recommends + bookmarkeds + read DESC').limit(4))
     end
+  end
+
+  def drafts
+    user = User.find(session[:user_id])
+    @posts = Post.where(:user_id => user.id, :published => false)
   end
 
   # GET /posts/new

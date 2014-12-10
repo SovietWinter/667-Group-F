@@ -14,9 +14,12 @@
 //= require jquery_ujs
 //= require angular/angular
 //= require angular-route/angular-route
+//= require angular-animate/angular-animate
 //= require angular-resource/angular-resource
 //= require angular-rails-templates
 //= require angular-sanitize/angular-sanitize
 //= require showdown/compressed/showdown
 //= require angular-markdown-directive/markdown
+//= require angucomplete/angucomplete
+//= require angular-base64-upload/dist/angular-base64-upload.min
 //= require_tree .

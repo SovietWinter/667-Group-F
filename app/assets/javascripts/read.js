@@ -72,11 +72,39 @@ readControllers.controller("ExploreContoller", ['$scope', '$resource', '$locatio
   }
 ]);
 
+readControllers.controller("AccountContoller", ['$scope', '$resource', '$location',
+  function($scope, $resource, $location){
+    User = $resource('/users/:userId', {userId: '@id',format: 'json'},
+    {
+        'save':   {method:'PUT'},
+    });
+
+    $scope.newUser = {}
+    var newUser = {};
+    User.get({userId: 'current'}, function(results){
+      $scope.user = results;
+      $scope.newUser.id = results.id;
+    });
+
+    $scope.updateInfo = function(){
+      onError = function(_httpResponse){
+        console.log(_httpResponse);
+        $scope.errors = _httpResponse.data;
+        window.scrollTo(0,document.body.scrollHeight);
+      }
+      console.log($scope.newUser);
+      User.save($scope.newUser, function(response){
+        window.location.href = "/";
+      }, onError);
+    }
+  }
+]);
+
 $(document).ready(function() {
   var userUp = true;
   $('#user-click').on('click', function(){
     if(userUp){
-      $('#user-menu').animate({top: '75px'},400, function(){
+      $('#user-menu').animate({top: '85px'},400, function(){
         userUp = false;
       });
     } else {

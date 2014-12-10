@@ -14,15 +14,17 @@ Rails.application.routes.draw do
   root    'read#index'
 
   get     'welcome'    =>  'splash#index'
-  # get     'compose' =>  'compose#index'
+  get     'compose' =>  'compose#index'
 
   post    'login'   => 'sessions#create'
   delete  'logout'  => 'sessions#destroy'
 
   get 'users/follow' => 'users#follow_list'
+  get 'users/current' => 'users#current'
   get 'posts/recent' => 'posts#recent'
   get 'posts/top' => 'posts#top'
-  
+  get 'drafts' => 'posts#drafts'
+
   get 'follow/:id' => 'users#follow'
   resources :posts
 

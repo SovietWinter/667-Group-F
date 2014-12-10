@@ -4,7 +4,10 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
+    "angular-animate": "latest",
     "angular-markdown-directive": "latest",
-    "bootstrap-sass-official": "latest"
+    "bootstrap-sass-official": "latest",
+    "angular-base64-upload": "latest",
+    "angucomplete": "latest"
   }
 }

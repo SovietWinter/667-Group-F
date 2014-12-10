@@ -4,15 +4,15 @@ var splash = angular.module('splash',[
   'templates',
   'ngRoute',
   'ngResource',
-  'splashControllers'
+  'splashControllers',
+  'ngAnimate'
 ]);
 
 splash.config([ '$routeProvider',
   function($routeProvider){
     $routeProvider
       .when('/', {
-        templateUrl: "splash.html",
-        controller: 'IndexContoller'
+        templateUrl: "splash.html"
       });
     $routeProvider
       .when('/signup', {
@@ -23,6 +23,11 @@ splash.config([ '$routeProvider',
       .when('/explore', {
         templateUrl: "explore.html",
         controller: 'ExploreContoller'
+      });
+    $routeProvider
+      .when('/posts/postId', {
+        templateUrl: "post.html",
+        controller: 'PostContoller'
       });
   }
 ]);
@@ -36,7 +41,9 @@ var read = angular.module('read',[
   'ngRoute',
   'ngResource',
   'readControllers',
-  'btford.markdown'
+  'btford.markdown',
+  'ngAnimate',
+  'naif.base64'
 ]);
 
 read.config([ '$routeProvider',
@@ -66,10 +73,56 @@ read.config([ '$routeProvider',
         templateUrl: "explore.html",
         controller: "ExploreContoller"
       });
+    $routeProvider
+      .when('/account', {
+        templateUrl: "account.html",
+        controller: "AccountContoller"
+      });
   }
 ]);
 
 readControllers = angular.module('readControllers',[]);
 
 // COMPOSE LOGGED IN
-// ...
+
+var compose = angular.module('compose',[
+  'templates',
+  'ngRoute',
+  'ngResource',
+  'composeControllers',
+  'btford.markdown',
+  'ngAnimate',
+  'naif.base64'
+]);
+
+compose.config([ '$routeProvider',
+  function($routeProvider){
+    $routeProvider
+      .when('/', {
+        templateUrl: "synths.html",
+        controller: "SynthsController"
+      });
+    $routeProvider
+      .when('/edit/:postId', {
+        templateUrl: "compose.html",
+        controller: "ComposeController"
+      });
+    $routeProvider
+      .when('/compose/:userId/publish', {
+        templateUrl: "public.html",
+        controller: "PublishContoller"
+      });
+    $routeProvider
+      .when('/account', {
+        templateUrl: "account.html",
+        controller: "AccountContoller"
+      });
+    $routeProvider
+      .when('/edit', {
+        templateUrl: "compose.html",
+        controller: "ComposeController"
+      });
+  }
+]);
+
+composeControllers = angular.module('composeControllers',[]);

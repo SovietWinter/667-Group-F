@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_filter :verify_authenticity_token
+  wrap_parameters :user, include: [:username, :email, :password, :password_confirmation, :prof_pic, :real_name, :blog_name, :city, :country]
 
   # GET /users
   # GET /users.json
@@ -37,6 +38,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def current
+    @user = current_user
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -63,14 +68,13 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    # if params[:user][:prof_pic]
+    #   params[:user][:prof_pic] = decode_base64
+    # end
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
@@ -94,4 +98,25 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation, :real_name, :prof_pic, :blog_name, :city, :country)
     end
+
+
+    # JASON PLEASE SORT THIS OUT
+
+    # def decode_base64
+    #   # decode base64 string
+    #   Rails.logger.info 'decoding base64 file'
+    #   decoded_data = Base64.decode64(params[:user][:prof_pic][:base64])
+    #   # create 'file' understandable by Paperclip
+    #   data = StringIO.new(decoded_data)
+    #   data.class_eval do
+    #     attr_accessor :content_type, :original_filename
+    #   end
+
+    #   # set file properties
+    #   data.content_type = params[:user][:filetype]
+    #   data.original_filename = params[:user][:filename]
+
+    #   # return data to be used as the attachment file (paperclip)
+    #   data
+    # end
 end

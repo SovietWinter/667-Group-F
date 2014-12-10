@@ -8,12 +8,6 @@ splashControllers.controller("RouteController", ['$scope', '$location',
   }
 ]);
 
-splashControllers.controller("IndexContoller", [ '$scope', '$routeParams', '$location', '$resource',
-  function($scope, $routeParams, $location, $resource){
-
-  }
-]);
-
 splashControllers.controller("SignupContoller", [ '$scope', '$routeParams', '$location', '$resource',
   function($scope, $routeParams, $location, $resource){
     $scope.user = {}
@@ -38,7 +32,21 @@ splashControllers.controller("SignupContoller", [ '$scope', '$routeParams', '$lo
 
 splashControllers.controller("ExploreContoller", [ '$scope', '$routeParams', '$location', '$resource',
   function($scope, $routeParams, $location, $resource){
+    Tops = $resource('/posts/top', {format: 'json'});
+    Tops.query(function(results){
+      $scope.posts = results;
+    });
+  }
+]);
 
+splashControllers.controller("ReadContoller", [ '$scope', '$routeParams', '$location', '$resource',
+  function($scope, $routeParams, $location, $resource){
+    Post = $resource('/posts/:postId', {postId: '@id', format: 'json'});
+    Post.get({postId: $routeParams.postId}, function(post){
+      $scope.post = post;
+    }, function(h){
+      $scope.errors = "No post of id: " + $routeParams.postId;
+    });
   }
 ]);
 
@@ -50,7 +58,7 @@ $(document).ready(function() {
         loginUp = false;
       });
     } else {
-      $('#login-slider').animate({top: '-170px'},400, function(){
+      $('#login-slider').animate({top: '-190px'},400, function(){
         loginUp = true;
       });
     }

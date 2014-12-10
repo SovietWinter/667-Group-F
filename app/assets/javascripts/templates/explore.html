@@ -1,3 +1,13 @@
-<div id="explore-images">
+<div id="explore-params">
+  <span>tag<input type="text" ng-model="tag"></span>
+  <span>topic<input type="text" ng-model="topic"></span>
+  <span>city<input type="text" ng-model="city"></span>
+</div>
 
+<div id="post-imgs">
+  <div ng-repeat="post in posts">
+    <img ng-src="POST IMG????">
+    <h2 class="post-title">{{posts.title}}</h2>
+    <h3 class="post-author">{{posts.author_name}}</h3>
+  </div>
 </div>
