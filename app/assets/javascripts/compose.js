@@ -16,8 +16,8 @@ composeControllers.controller("RouteController", ['$scope', '$location', '$http'
   }
 ]);
 
-composeControllers.controller("SynthsController", ['$scope', '$location', '$resource',
-  function($scope, $location, $resource){
+composeControllers.controller("SynthsController", ['$scope', '$location', '$resource', '$http',
+  function($scope, $location, $resource, $http){
     $scope.nav.left = "home";
     $scope.nav.Left  = function(){window.location.href = "/";}
     $scope.nav.right = "new synth";
@@ -28,8 +28,25 @@ composeControllers.controller("SynthsController", ['$scope', '$location', '$reso
       $scope.posts = results;
     });
 
+    Bookmarks = $resource('/users/bookmarks', {format: 'json'});
+    Bookmarks.query(function(results){
+      $scope.bookmarks = results;
+    });
+
     $scope.edit = function(postid){
       $location.path('/edit/' + postid);
+    }
+
+    $scope.delete = function(p){
+      $http.delete("/posts/" + p.id).success(function(d, s, h, c) {
+        window.location.href = "/compose/";
+      }).error(function(d,s,h,c){
+        console.log(d);
+      });
+    }
+
+    $scope.read = function(postId){
+      window.location.href = "/#/posts/" + postId;
     }
 
   }
@@ -111,3 +128,31 @@ $(document).ready(function() {
     }
   });
 });
+
+composeControllers.controller("AccountContoller", ['$scope', '$resource', '$location',
+  function($scope, $resource, $location){
+    User = $resource('/users/:userId', {userId: '@id',format: 'json'},
+    {
+        'save':   {method:'PUT'},
+    });
+
+    $scope.newUser = {}
+    var newUser = {};
+    User.get({userId: 'current'}, function(results){
+      $scope.user = results;
+      $scope.newUser.id = results.id;
+    });
+
+    $scope.updateInfo = function(){
+      onError = function(_httpResponse){
+        console.log(_httpResponse);
+        $scope.errors = _httpResponse.data;
+        window.scrollTo(0,document.body.scrollHeight);
+      }
+      console.log($scope.newUser);
+      User.save($scope.newUser, function(response){
+        window.location.href = "/#/account";
+      }, onError);
+    }
+  }
+]);

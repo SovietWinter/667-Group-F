@@ -1,6 +1,6 @@
 #user-menu{
   background-color: #f1f1ee;
-  position: absolute;
+  position: fixed;
   top: -75px;
   right: 0;
   width: 14em;
@@ -45,11 +45,31 @@
 .post-box{
   display: inline-block;
   width: 75%;
+  vertical-align: middle;
+}
+
+.square-crop{
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #bbb;
+}
+
+.post-box img{
+  display: inline-block;
+  vertical-align: middle;
+}
+.post-box p{
+  display: inline-block;
+  width: 70%;
 }
 
 .preview-text{
   padding: 30px;
   padding-right: 10px;
+  padding-left: 10px;
   text-decoration: none;
   -webkit-transition: .3s;
   transition: .3s;
@@ -94,6 +114,7 @@
   margin: 5px;
   width: 100%;
   min-width: 100px;
+  height: 50%;
   line-height: 2.5em;
   border: 1px solid rgba(0,0,0,.3);
   border-radius: 10px;

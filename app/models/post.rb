@@ -31,4 +31,8 @@ class Post < ActiveRecord::Base
 	def author_name
 		@author_name ||= User.find(self.user_id).username
 	end
+
+	def author_pic
+		@author_pic ||= User.find(self.user_id).prof_pic
+	end
 end

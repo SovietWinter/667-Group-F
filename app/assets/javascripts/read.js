@@ -94,7 +94,7 @@ readControllers.controller("AccountContoller", ['$scope', '$resource', '$locatio
       }
       console.log($scope.newUser);
       User.save($scope.newUser, function(response){
-        window.location.href = "/";
+        window.location.href = "/#/account";
       }, onError);
     }
   }

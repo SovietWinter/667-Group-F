@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   get 'users/follow' => 'users#follow_list'
   get 'users/current' => 'users#current'
+  get 'users/bookmarks' => 'users#bookmarks'
   get 'posts/recent' => 'posts#recent'
   get 'posts/top' => 'posts#top'
   get 'drafts' => 'posts#drafts'

@@ -42,6 +42,15 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def bookmarks
+    b = current_user.bookmarkings
+    @posts = []
+    for p in b
+      @posts.push Post.find(p.post_id)
+    end
+    render json: @posts
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -98,9 +107,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation, :real_name, :prof_pic, :blog_name, :city, :country)
     end
-
-
-    # JASON PLEASE SORT THIS OUT
 
     def decode_base64
       # decode base64 string
