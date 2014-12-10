@@ -7,7 +7,7 @@
       <a class="nostyle" href ng-click="read($index)"><p class="preview-text">{{post.content.split(' ').slice(0,30).join(' ')}} . . .<br/><span class="read-button">read more</span></p></a>
     </div>
     <div class="post-controls">
-      <a href class="nostyle"><p class="stat-count">bookmark {{post.bookmarkings.length}}</p></a>
+      <a href ng-click="bookmark(post)" class="nostyle"><p class="stat-count">bookmark {{post.bookmarkings.length}}</p></a>
       <a href ng-click="recommend($index)" class="nostyle"><p class="stat-count">recommend {{post.num_recommends}}</p></a>
     </div>
   </div>

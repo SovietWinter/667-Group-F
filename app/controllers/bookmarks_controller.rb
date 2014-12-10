@@ -1,4 +1,5 @@
 class BookmarksController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   def create
 	if logged_in?
 		#check if record already exists
@@ -8,9 +9,9 @@ class BookmarksController < ApplicationController
 			#if doesn't exist, add
 			bookmark = Bookmarking.create(user_id: current_user.id, post_id: params[:post_id])
 			if bookmark.save
-				format.json { render :show, status: :created, location: bookmark}
+        render :show
 			else
-				format.json { render json: @user.errors, status: :unprocessable_entity }
+        render json: @user.errors, status: :unprocessable_entity
 			end
 		end
 	end
@@ -21,7 +22,7 @@ class BookmarksController < ApplicationController
       bookmark.destroy_all
     end
   end
-  
+
  private
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params

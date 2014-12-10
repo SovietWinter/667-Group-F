@@ -15,8 +15,8 @@ readControllers.controller("RouteController", ['$scope', '$location', '$http',
   }
 ]);
 
-readControllers.controller("HomeContoller", ['$scope', '$resource', '$location',
-  function($scope, $resource, $location){
+readControllers.controller("HomeContoller", ['$scope', '$resource', '$location', '$http',
+  function($scope, $resource, $location, $http){
     Posts = $resource('/posts/recent', {format: 'json'});
     Posts.query(function(results){
       $scope.posts = results;
@@ -34,6 +34,13 @@ readControllers.controller("HomeContoller", ['$scope', '$resource', '$location',
         alert('Sorry, something went wrong!');
       });
     }
+
+    $scope.bookmark = function(post){
+      $http.post("/bookmarks/create", {post_id: post.id}).success(function(d, s, h, c){
+        post.bookmarkings.length++;
+      });
+    }
+
     $scope.read = function(index){
       $location.path('/posts/' + $scope.posts[index].id);
     }
