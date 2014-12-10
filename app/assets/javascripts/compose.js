@@ -38,10 +38,62 @@ composeControllers.controller("SynthsController", ['$scope', '$location', '$reso
 composeControllers.controller("ComposeController", ['$scope', '$location', '$resource', '$routeParams',
   function($scope, $location, $resource, $routeParams){
     $scope.nav.left = "save & exit";
-    $scope.nav.Left  = function(){$location.path('/');}
-    $scope.nav.right = "review & publish";
-    $scope.nav.Right = function(){$scope.route('/publish/')};
+    $scope.nav.Left  = function(){$scope.save();}
+    $scope.nav.right = "publish";
+    $scope.nav.Right = function(){$scope.publish();};
 
+    Post = $resource('/posts/:postId', {postId: '@id', format: 'json'},
+    {
+      'create': {method:'POST'},
+      'save':   {method:'PUT'}
+    });
+
+
+    $scope.publish = function(){
+      $scope.post.published = true;
+      onError = function(_httpResponse){
+        console.log(_httpResponse);
+        $scope.errors = _httpResponse.data;
+        window.scrollTo(0,document.body.scrollHeight);
+      }
+      if($scope.post.id){
+        $scope.post.$save(function(){
+          window.location.href = "/#/posts/" + $scope.post.id;
+        }, onError);
+      } else {
+        Post.create($scope.post, function(response){
+          window.location.href = "/#/posts/" + response.id;
+        }, onError);
+      }
+    }
+
+    $scope.save = function(){
+      onError = function(_httpResponse){
+        console.log(_httpResponse);
+        $scope.errors = _httpResponse.data;
+        window.scrollTo(0,document.body.scrollHeight);
+      }
+      if($scope.post.id){
+        $scope.post.$save(function(){
+          $location.path('/');
+        }, onError);
+      } else {
+        $scope.post.published = false;
+        Post.create($scope.post, function(response){
+          $location.path('/');
+        }, onError);
+      }
+    }
+
+    if ($routeParams.postId){
+      Post.get({postId: $routeParams.postId}, function(post){
+        $scope.post = post;
+      }, function(h){
+        $scope.errors = "No post of id: " + $routeParams.postId;
+      });
+    } else {
+      $scope.post = {};
+    }
   }
 ]);
 
