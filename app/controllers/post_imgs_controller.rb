@@ -40,6 +40,10 @@ class PostImgsController < ApplicationController
   # PATCH/PUT /post_imgs/1
   # PATCH/PUT /post_imgs/1.json
   def update
+    # If class to use json
+    # if params[:image]
+    #   params[:image] = decode_base64
+    # end
     respond_to do |format|
       if @post_img.update(post_img_params)
         format.html { redirect_to @post_img, notice: 'Post img was successfully updated.' }
@@ -70,5 +74,24 @@ class PostImgsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_img_params
       params.require(:post_img).permit(:post_id, :image)
+    end
+
+    def decode_base64
+      # decode base64 string
+      # puts Rails.logger.info 'decoding base64 file'
+      decoded_data = Base64.decode64(params[:image][:base64])
+      # create 'file' understandable by Paperclip
+      data = StringIO.new(decoded_data)
+      data.class_eval do
+        attr_accessor :content_type, :original_filename, :file_size
+      end
+
+      # set file properties
+      data.content_type = params[:image][:filetype]
+      data.original_filename = params[:image][:filename]
+      data.file_size = params[:image][:filesize]
+
+      # return data to be used as the attachment file (paperclip)
+      data
     end
 end

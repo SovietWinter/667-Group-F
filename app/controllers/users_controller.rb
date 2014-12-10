@@ -68,9 +68,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    # if params[:user][:prof_pic]
-    #   params[:user][:prof_pic] = decode_base64
-    # end
+    if params[:user][:prof_pic]
+      params[:user][:prof_pic] = decode_base64
+    end
     if @user.update(user_params)
       render json: @user
     else
@@ -102,21 +102,22 @@ class UsersController < ApplicationController
 
     # JASON PLEASE SORT THIS OUT
 
-    # def decode_base64
-    #   # decode base64 string
-    #   Rails.logger.info 'decoding base64 file'
-    #   decoded_data = Base64.decode64(params[:user][:prof_pic][:base64])
-    #   # create 'file' understandable by Paperclip
-    #   data = StringIO.new(decoded_data)
-    #   data.class_eval do
-    #     attr_accessor :content_type, :original_filename
-    #   end
+    def decode_base64
+      # decode base64 string
+      # puts Rails.logger.info 'decoding base64 file'
+      decoded_data = Base64.decode64(params[:user][:prof_pic][:base64])
+      # create 'file' understandable by Paperclip
+      data = StringIO.new(decoded_data)
+      data.class_eval do
+        attr_accessor :content_type, :original_filename, :file_size
+      end
 
-    #   # set file properties
-    #   data.content_type = params[:user][:filetype]
-    #   data.original_filename = params[:user][:filename]
+      # set file properties
+      data.content_type = params[:user][:prof_pic][:filetype]
+      data.original_filename = params[:user][:prof_pic][:filename]
+      data.file_size = params[:user][:prof_pic][:filesize]
 
-    #   # return data to be used as the attachment file (paperclip)
-    #   data
-    # end
+      # return data to be used as the attachment file (paperclip)
+      data
+    end
 end
