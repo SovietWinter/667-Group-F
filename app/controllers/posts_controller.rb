@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   	user.follows.each do |user|
   		@followed_user_ids.push(user.id)
   	end
-  	@followed_recent_posts = (Post.order('created_at DESC').limit(10).where(:user_id => @followed_user_ids))
+  	@followed_recent_posts = (Post.order('created_at DESC').limit(10).where(:user_id => @followed_user_ids, :published => true))
   end
 
   def top
@@ -55,14 +55,13 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
   	if logged_in?
-      respond_to do |format|
-        if @post.save
-          format.html { redirect_to @post, notice: 'Post was successfully created.' }
-          format.json { render :show, status: :created, location: @post }
-        else
-          format.html { render :new }
-          format.json { render json: @post.errors, status: :unprocessable_entity }
-        end
+      params[:post][:user_id] = current_user.id
+      @post = Post.new(post_params)
+      if @post.save
+        puts @post.published
+        render json: @post
+      else
+        render json: @post.errors, status: :unprocessable_entity
       end
     end
   end
@@ -101,6 +100,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :title, :content, :created_at, :num_recommends, :topic, :image)
+      params.require(:post).permit(:user_id, :title, :content, :created_at, :num_recommends, :topic, :image, :published)
     end
 end
