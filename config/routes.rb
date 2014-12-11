@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   get 'posts/top' => 'posts#top'
   get 'drafts' => 'posts#drafts'
 
-  get 'follow/:id' => 'users#follow'
+  post 'follow/:id' => 'users#follow'
+  delete 'unfollow/:id' => 'users#unfollow'
+  get   'isfollowing/:id' => 'users#isfollowing'
   resources :posts
 
   resources :tags

@@ -1,0 +1,44 @@
+#blog-name{
+  display: inline-block;
+  float: left;
+  text-align: center;
+
+}
+#blog-username{
+  font-family: 'Josefin Sans', 'Open Sans', verdana, arial, helvetica, sans-serif;
+  font-size: 300%;
+  line-height: 1.2em;
+  margin: .5em 0;
+  display: inline;
+}
+
+#blog-real-name{
+  font-family: 'Raleway', 'Open Sans', verdana, arial, helvetica, sans-serif;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  display: inline;
+}
+
+#blog-profile-pic{
+  height: 150px;
+  width: auto;
+  display: inline-block;
+  float: left;
+
+}
+
+#follow-button{
+  margin-top: 2em;
+  display: inline-block;
+  width: 50%;
+}
+
+#profile-posts{
+  margin-top: 30px;
+  float: left;
+}
+
+.following{
+  color: #111;
+  background-color: #f1f1ee;
+}

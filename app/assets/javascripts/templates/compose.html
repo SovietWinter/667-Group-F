@@ -1,8 +1,10 @@
 <div id="compose-box">
+  <input type="text" placeholder="post title" ng-model="post.title">
   <textarea name="post" id="post" cols="30" rows="10" ng-model="post.content" placeholder="start here...">
   </textarea>
 </div>
 
-<div id="post-preview" btf-markdown="post.content">
-
+<div id="preview-box">
+  <h1 id="post-preview-title">{{post.title}}</h1>
+  <div id="md-preview" btf-markdown="post.content"></div>
 </div>

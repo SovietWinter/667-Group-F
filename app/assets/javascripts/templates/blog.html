@@ -1,0 +1,23 @@
+<div id="blog-name">
+  <h1 id="blog-username">{{user.username}}</h1>
+  <h2 id="blog-real-name">({{user.real_name}})</h2>
+  <a href id="follow-button" class="button" ng-click="follow()">{{following.label}}</a>
+</div>
+
+<div class="square-crop"><img id="blog-profile-pic" ng-src="{{user.prof_pic}}" alt=""></div>
+
+<div id="profile-posts">
+  <div class="feed-posts" ng-repeat="post in user.posts">
+    <div ng-if="post.published">
+      <h2><a href ng-click="read($index)">{{post.title}}</a></h2>
+      <h3>By: <a href>{{post.author_name}}</a></h3>
+      <div class="post-box">
+        <a class="nostyle" href ng-click="read($index)"><p class="preview-text">{{post.content.split(' ').slice(0,30).join(' ')}} . . .<br/><span class="read-button">read more</span></p></a>
+      </div>
+      <div class="post-controls">
+        <a href ng-click="bookmark(post)" class="nostyle"><p class="stat-count">bookmark {{post.bookmarkings.length}}</p></a>
+        <a href ng-click="recommend($index)" class="nostyle"><p class="stat-count">recommend {{post.num_recommends}}</p></a>
+      </div>
+    </div>
+  </div>
+</div>

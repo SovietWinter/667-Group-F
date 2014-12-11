@@ -14,18 +14,40 @@ class UsersController < ApplicationController
   def show
   end
 
-  # GET /follow/:id
+  # POST /follow/:id
   def follow
     if logged_in?
       #check if record already exists
       if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
-        Following.where(:user_id => current_user.id, :follow_id => params[:id]).destroy
+        render json: {"ehh" => true}
       else
         #if doesn't exist, add
         current_user = User.find(session[:user_id])
         following = Following.create(user_id: current_user.id, follow_id: params[:id])
         following.save
+        render json: {status: '201'}
       end
+    end
+  end
+
+  def unfollow
+    if logged_in?
+      #check if record already exists
+      if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
+        rel = Following.where(:user_id => current_user.id, :follow_id => params[:id])
+        rel.destroy_all
+        render json: {status: 'ok'}
+      else
+        render json: @errors
+      end
+    end
+  end
+
+  def isfollowing
+    if Following.where(:user_id => current_user.id, :follow_id => params[:id]).present?
+      render json: {status: '200'}
+    else
+      puts "not following"
     end
   end
 
@@ -35,6 +57,7 @@ class UsersController < ApplicationController
       @user = User.find(session[:user_id])
       @following_list = @user.follows
       @follower_list = @user.followers
+      render json: [@follower_list, @following_list]
     end
   end
 

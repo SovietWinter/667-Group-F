@@ -44,6 +44,9 @@ readControllers.controller("HomeContoller", ['$scope', '$resource', '$location',
     $scope.read = function(index){
       $location.path('/posts/' + $scope.posts[index].id);
     }
+    $scope.blog = function(index){
+      $location.path('/blogs/' + $scope.posts[index].user_id);
+    }
   }
 ]);
 
@@ -55,15 +58,60 @@ readControllers.controller("PostContoller", ['$scope', '$resource', '$routeParam
     }, function(h){
       $scope.errors = "No post of id: " + $routeParams.postId;
     });
-    $scope.de = function(s){
-      console.log(s);
-    }
   }
 ]);
 
-readControllers.controller("BlogContoller", ['$scope', '$resource', '$routeParams', '$location',
-  function($scope, $resource, $routeParams, $location){
+readControllers.controller("BlogContoller", ['$scope', '$resource', '$routeParams', '$location', '$http',
+  function($scope, $resource, $routeParams, $location, $http){
 
+    User = $resource('/users/:userId', {userId: '@id', format: 'json'});
+    User.get({userId: $routeParams.userId}, function(user){
+      $scope.user = user;
+    }, function(h){
+      $scope.errors = "No user of id: " + $routeParams.userId;
+    });
+
+    $scope.following = {};
+    $scope.following.state = false;
+    $scope.following.label = "follow";
+
+    $http.get('/isfollowing/' + $routeParams.userId, {format: 'json'}).success(function(d,s,h,c){
+      $scope.following.state = true;
+      $scope.following.label = "following";
+    }).error(function(){});
+
+    $scope.recommend = function(index){
+      $scope.posts[index].num_recommends++;
+      Post.save($scope.posts[index], function(){},function(error){
+        console.log(error);
+        $scope.posts[index].num_recommends--;
+        alert('Sorry, something went wrong!');
+      });
+    }
+
+    $scope.bookmark = function(post){
+      $http.post("/bookmarks/create", {post_id: post.id}).success(function(d, s, h, c){
+        post.bookmarkings.length++;
+      });
+    }
+
+    $scope.read = function(index){
+      $location.path('/posts/' + $scope.posts[index].id);
+    }
+
+    $scope.follow = function(){
+      if(!$scope.following.state){
+        $http.post("/follow/" + $routeParams.userId, {user_id: $routeParams.userId}).success(function(d, s, h, c){
+          $scope.following.state = !$scope.follow.state;
+          $scope.following.label = "following"
+        });
+      } else {
+        $http.delete("/unfollow/" + $routeParams.userId, {user_id: $routeParams.userId}).success(function(d, s, h, c){
+          $scope.following.state = !$scope.follow.state;
+          $scope.following.label = "follow"
+        });
+      }
+    }
   }
 ]);
 
