@@ -121,9 +121,18 @@ readControllers.controller("FollowContoller", ['$scope', '$resource', '$location
   }
 ]);
 
-readControllers.controller("ExploreContoller", ['$scope', '$resource', '$location',
-  function($scope, $resource, $location){
-
+readControllers.controller("ExploreContoller", [ '$scope', '$routeParams', '$location', '$resource',
+  function($scope, $routeParams, $location, $resource){
+    Tops = $resource('/posts/', {format: 'json'});
+    Tops.query(function(results){
+      var sorted = results.sort(function(a, b){
+        if (a.num_recommends+a.bookmarkings.length >= b.num_recommends + b.bookmarkings.length)
+          return -1;
+        else
+          return 1;
+      });
+      $scope.posts = sorted;
+    });
   }
 ]);
 
@@ -159,11 +168,11 @@ $(document).ready(function() {
   var userUp = true;
   $('#user-click').on('click', function(){
     if(userUp){
-      $('#user-menu').animate({top: '85px'},400, function(){
+      $('#user-menu').animate({top: '-30px'},400, function(){
         userUp = false;
       });
     } else {
-      $('#user-menu').animate({top: '-75px'},400, function(){
+      $('#user-menu').animate({top: '-225px'},400, function(){
         userUp = true;
       });
     }

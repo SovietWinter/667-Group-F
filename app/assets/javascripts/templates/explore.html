@@ -4,10 +4,25 @@
   <span>city<input type="text" ng-model="city"></span>
 </div>
 
-<div id="post-imgs">
+<!-- <div id="post-imgs">
   <div ng-repeat="post in posts">
     <img ng-src="POST IMG????">
     <h2 class="post-title">{{posts.title}}</h2>
     <h3 class="post-author">{{posts.author_name}}</h3>
+  </div>
+</div> -->
+
+<div id="explore-posts">
+  <div class="feed-posts" ng-repeat="post in posts">
+    <h2><a href ng-click="read($index)">{{post.title}}</a></h2>
+    <h3>By: <a href ng-click="blog($index)">{{post.author_name}}</a></h3>
+    <div class="post-box">
+      <div class="square-crop"><img ng-src="{{post.author_pic}}"></div>
+      <a class="nostyle" href ng-click="read($index)"><p class="preview-text">{{post.content.split(' ').slice(0,30).join(' ')}} . . .<br/><span class="read-button">read more</span></p></a>
+    </div>
+    <div class="post-controls">
+      <a href ng-click="bookmark(post)" class="nostyle"><p class="stat-count">bookmark {{post.bookmarkings.length}}</p></a>
+      <a href ng-click="recommend($index)" class="nostyle"><p class="stat-count">recommend {{post.num_recommends}}</p></a>
+    </div>
   </div>
 </div>

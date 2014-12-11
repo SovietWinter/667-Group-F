@@ -32,9 +32,15 @@ splashControllers.controller("SignupContoller", [ '$scope', '$routeParams', '$lo
 
 splashControllers.controller("ExploreContoller", [ '$scope', '$routeParams', '$location', '$resource',
   function($scope, $routeParams, $location, $resource){
-    Tops = $resource('/posts/top', {format: 'json'});
+    Tops = $resource('/posts/', {format: 'json'});
     Tops.query(function(results){
-      $scope.posts = results;
+      var sorted = results.sort(function(a, b){
+        if (a.num_recommends+a.bookmarkings.length >= b.num_recommends + b.bookmarkings.length)
+          return -1;
+        else
+          return 1;
+      });
+      $scope.posts = sorted;
     });
   }
 ]);
@@ -58,7 +64,7 @@ $(document).ready(function() {
         loginUp = false;
       });
     } else {
-      $('#login-slider').animate({top: '-190px'},400, function(){
+      $('#login-slider').animate({top: '-195px'},400, function(){
         loginUp = true;
       });
     }

@@ -1,10 +1,10 @@
 #user-menu{
   background-color: #f1f1ee;
   position: fixed;
-  top: -75px;
+  top: -230px;
   right: 0;
   width: 14em;
-  padding: .6em .6em .6em .6em;
+  padding: 6em .6em .6em .6em;
   border-radius: 4px;
   z-index: 9;
   -webkit-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.4);

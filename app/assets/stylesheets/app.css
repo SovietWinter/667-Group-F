@@ -203,3 +203,10 @@ a:hover {
   text-align: center;
   outline: none;
 }
+
+#explore-posts{
+  position: absolute;
+  top: 200px;
+  width: 70%;
+}
+

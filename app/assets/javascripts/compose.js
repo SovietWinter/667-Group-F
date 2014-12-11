@@ -114,21 +114,6 @@ composeControllers.controller("ComposeController", ['$scope', '$location', '$res
   }
 ]);
 
-$(document).ready(function() {
-  var userUp = true;
-  $('#user-click').on('click', function(){
-    if(userUp){
-      $('#user-menu').animate({top: '85px'},400, function(){
-        userUp = false;
-      });
-    } else {
-      $('#user-menu').animate({top: '-75px'},400, function(){
-        userUp = true;
-      });
-    }
-  });
-});
-
 composeControllers.controller("AccountContoller", ['$scope', '$resource', '$location',
   function($scope, $resource, $location){
     User = $resource('/users/:userId', {userId: '@id',format: 'json'},
