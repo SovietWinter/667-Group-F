@@ -25,17 +25,35 @@ class PostsController < ApplicationController
   end
 
   def top
-    if params[:city]
-      user = User.where(:city => current_user.city, :country => current_user.country)
-    else
-      user = User.all
-    end
-    @top_id = []
-    user.each do |u|
-      @top_id.push(u.id)
-    end
+    # if params[:city]
+    #   user = User.where(:city => current_user.city, :country => current_user.country)
+    # else
+    #   user = User.all
+    # end
+    # @top_id = []
+    # user.each do |u|
+    #   @top_id.push(u.id)
+    # end
     # @post = Post.where(:user_id => @top_id)
-    @top_posts = Post.order('num_recommends + bookmarkeds + read DESC').limit(4)
+    # @top_posts = Post.order('num_recommends + bookmarkeds + read DESC').limit(4)
+    where_hash = {}
+    if params[:topic]
+      where_hash[:posts] = {topic: params[:topic]}
+    end
+    if params[:city] || params[:country]
+      where_hash[:users] = {}
+      if params[:city]
+        where_hash[:users][:city] = params[:city]
+      end
+      if params[:country]
+        where_hash[:users][:country] = params[:country]
+      end
+    end
+    if params[:tag]
+      where_hash[:tags] = {tag: params[:tag]}
+    end
+    # @top_posts = Post.includes(:user, :tags).where(where_hash).order('num_recommends + bookmarkeds + read DESC').limit(4)
+    @top_posts = Post.includes(:user, :tags).where(where_hash).order('num_recommends DESC').limit(4)
   end
 
   def drafts
@@ -102,6 +120,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :title, :content, :created_at, :num_recommends, :topic, :image, :published)
+      params.require(:post).permit(:user_id, :title, :content, :created_at, :num_recommends, :topic, :image, :published, :city, :country, :topic, :tag)
     end
 end
