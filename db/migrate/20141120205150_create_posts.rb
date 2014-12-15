@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.datetime :created_at
-      t.integer :num_recommends
+      t.integer :num_recommends, default: 0
       t.string :topic
 
       t.timestamps null: false

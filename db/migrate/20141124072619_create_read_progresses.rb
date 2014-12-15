@@ -3,8 +3,8 @@ class CreateReadProgresses < ActiveRecord::Migration
     create_table :read_progresses do |t|
       t.integer :post_id
       t.integer :user_id
-      t.integer :progress
-      t.boolean :completed
+      t.integer :progress, default: 0
+      t.boolean :completed, default: false
 
       t.timestamps null: false
     end

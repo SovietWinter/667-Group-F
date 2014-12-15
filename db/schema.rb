@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20141209064818) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",     null: false
-    t.integer  "num_recommends"
+    t.datetime "created_at",                     null: false
+    t.integer  "num_recommends", default: 0
     t.string   "topic"
-    t.datetime "updated_at",     null: false
-    t.boolean  "published"
+    t.datetime "updated_at",                     null: false
+    t.boolean  "published",      default: false
   end
 
   create_table "posts_tags", force: true do |t|
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 20141209064818) do
   create_table "read_progresses", force: true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
-    t.integer  "progress"
-    t.boolean  "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "progress",   default: 0
+    t.boolean  "completed",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "referencings", force: true do |t|
